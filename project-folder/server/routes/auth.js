@@ -13,31 +13,7 @@ router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
       .select("-password")
-      .populate("cart");
-    res.json(user);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
-router.post("/:id", auth, async (req, res) => {
-  try {
-    //const product = await Product.findById(req.params.id);
-
-    await User.findOneAndUpdate(
-      {
-        _id: req.user.id,
-      },
-      {
-        $addToSet: {
-          cart: req.params.id,
-        },
-      }
-    );
-    const user = await User.findById(req.user.id)
-      .select("-password")
-      .populate("cart");
+      .populate("myCart.cart");
     res.json(user);
   } catch (err) {
     console.log(err.message);
