@@ -4,6 +4,7 @@ import Product from "../components/Product";
 //import MessageBox from "../components/MessageBox";
 import { listProducts } from "../redux/product/productActions";
 import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../redux/auth/authActions";
 import axios from "axios";
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(listProducts());
+    dispatch(getUser());
   }, []);
   return (
     <div>
@@ -20,7 +22,7 @@ function Home() {
         <div>LOADING...</div>
       ) : (
         <div>
-          <div class="row justify-content-center">
+          <div class="row justify-content-center ml-0 mr-0">
             {products.map((product) => (
               <Product product={product} />
             ))}

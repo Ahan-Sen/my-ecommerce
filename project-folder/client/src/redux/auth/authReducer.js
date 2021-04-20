@@ -9,6 +9,8 @@ import {
   CLEAR_ERRORS,
   SET_USER,
   AUTH_ERROR,
+  ADD_TO_CART,
+  CART_ERROR,
 } from "../types";
 
 export const User = (
@@ -27,6 +29,7 @@ export const User = (
         userAuth: true,
         errors: null,
       };
+
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
@@ -45,6 +48,7 @@ export const User = (
         userAuth: null,
         errors: action.payload,
       };
+
     case SET_ERROR:
       return {
         ...state,

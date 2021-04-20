@@ -9,6 +9,15 @@ export const SET_USER = "SET_USER";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
+export const ADD_TO_CART = "ADD_TO_CART";
+export const CART_ERROR = "CART_ERROR";
+export const GET_CART = "GET_CART";
+export const CART_REQUEST = "CART_REQUEST";
+
+export const ADDRESS_REQUEST = "ADDRESS_REQUEST";
+export const GET_ADDRESS = "GET_ADDRESS";
+export const CART_SAVE_SHIPPING_ADDRESS = "CART_SAVE_SHIPPING_ADDRESS";
+
 export const PRODUCT_LIST_REQUEST = "PRODUCT_LIST_REQUEST";
 export const PRODUCT_LIST_SUCCESS = "PRODUCT_LIST_SUCCESS";
 export const PRODUCT_LIST_FAIL = "PRODUCT_LIST_FAIL";

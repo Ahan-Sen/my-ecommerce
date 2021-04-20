@@ -27,6 +27,28 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
+    myAddress: {
+      fullName: {
+        type: String,
+        default: "",
+      },
+      houseNumber: {
+        type: String,
+        default: "",
+      },
+      city: {
+        type: String,
+        default: "",
+      },
+      postalcode: {
+        type: Number,
+        default: null,
+      },
+      country: {
+        type: String,
+        default: "",
+      },
+    },
     isAdmin: { type: Boolean, default: false, required: true },
   },
   {
