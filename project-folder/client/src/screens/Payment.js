@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { createOrder } from "../redux/order/orderActions";
 
-export default function Payment() {
+export default function Payment(props) {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
+  const order = useSelector((state) => state.order);
+
+  useEffect(() => {
+    if (order.success) {
+      props.history.push(`/order/${order.order._id}`);
+    }
+  }, [order, props.history, order.success]);
+
+  const placeOrderHandler = () => {
+    dispatch(createOrder(cart));
+  };
 
   const toPrice = (num) => Number(num.toFixed(2)); // 5.123 => "5.12" => 5.12
   cart.itemsPrice = toPrice(
@@ -106,7 +118,7 @@ export default function Payment() {
               <li>
                 <button
                   type="button"
-                  //onClick={checkoutHandler}
+                  onClick={placeOrderHandler}
                   className="btn btn-primary btn-lg btn-block mt-4"
                   disabled={cart.cart.length === 0}
                 >

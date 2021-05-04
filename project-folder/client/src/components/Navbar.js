@@ -27,18 +27,21 @@ const Header = (props) => {
       <Nav navbar>
         <NavItem>
           <NavbarBrand>
-            <h5>Hello, {users.user && users.user.name}</h5>
+            <Link to="/cart" className="text-white">
+              <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            </Link>
           </NavbarBrand>
         </NavItem>
-        <NavItem>
-          <h4> | </h4>
-        </NavItem>
+
         <NavItem className="pb-2">
           <NavLink href="#!" onClick={onLogout}>
             <h5>
               Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
             </h5>
           </NavLink>
+        </NavItem>
+        <NavItem>
+          <Link to="/orderhistory">My Orders</Link>
         </NavItem>
       </Nav>
     </Fragment>
@@ -48,12 +51,9 @@ const Header = (props) => {
     <Fragment>
       <Nav className="row" navbar>
         <NavItem>
-          <NavLink href="/register" className="pb-0">
-            <h5>Register</h5>
+          <NavLink href="/cart">
+            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
           </NavLink>
-        </NavItem>
-        <NavItem>
-          <h4> | </h4>
         </NavItem>
         <NavItem>
           <NavLink href="/login">
@@ -67,17 +67,20 @@ const Header = (props) => {
   return (
     <>
       <Navbar dark expand="md" className="bg-dark">
-        <div className="container ">
+        <div className="col-6">
           <NavbarBrand className="mr-3">
             <Link className="text-decoration-none" to="/">
               <h2 className="text-white">SHOPPING</h2>
             </Link>
           </NavbarBrand>
-          <ul className="d-flex flex-row badge badge-dark">
+        </div>
+        <div className="col-5">
+          <ul className="d-flex justify-content-end">
             {users.userAuth ? userLinks : authLinks}
           </ul>
-          <Link to="/cart">Cart</Link>
         </div>
+
+        {/* <Link to="/cart">Cart</Link> */}
       </Navbar>
     </>
   );

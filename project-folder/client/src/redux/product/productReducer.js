@@ -7,14 +7,21 @@ import {
   PRODUCT_DETAILS_FAIL,
 } from "../types";
 
-export const ProductList = (state = { products: [] }, action) => {
+export const ProductList = (
+  state = {
+    products: [],
+    loading: false,
+    error: null,
+  },
+  action
+) => {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
-      return { loading: true };
+      return { ...state, loading: true };
     case PRODUCT_LIST_SUCCESS:
-      return { loading: false, products: action.payload };
+      return { ...state, loading: false, products: action.payload };
     case PRODUCT_LIST_FAIL:
-      return { loading: false, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }

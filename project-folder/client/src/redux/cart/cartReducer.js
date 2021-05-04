@@ -34,7 +34,6 @@ export const Cart = (
       } else {
         return { ...state, cart: [...state.cart, item] };
       }
-
     case GET_ADDRESS:
       return {
         ...state,

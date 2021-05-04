@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Rating from "../components/Rating";
 import { detailsProduct } from "../redux/product/productActions";
 import { addToCart } from "../redux/cart/cartActions";
+import { getUser } from "../redux/auth/authActions";
 import { Link } from "react-router-dom";
 
 function Product(props) {
@@ -11,13 +12,22 @@ function Product(props) {
   const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+  const users = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
 
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
+
   const addToCartHandler = () => {
-    dispatch(addToCart(productId, qty));
+    if (users.userAuth) {
+      dispatch(addToCart(productId, qty));
+    } else {
+      props.history.push(`/login?redirect=/product/${productId}`);
+    }
   };
 
   return (

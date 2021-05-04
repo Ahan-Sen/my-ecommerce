@@ -12,6 +12,7 @@ app.use("/register", require("./routes/register"));
 app.use("/auth", require("./routes/auth"));
 app.use("/cart", require("./routes/cart"));
 app.use("/products", require("./routes/product"));
+app.use("/order", require("./routes/order"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started at PORT ${PORT}`));

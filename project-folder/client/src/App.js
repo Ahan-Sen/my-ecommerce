@@ -6,11 +6,12 @@ import Product from "./screens/Product";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import Cart from "./screens/Cart";
+import Order from "./screens/Order";
 import Payment from "./screens/Payment";
 import AddAddress from "./screens/Address";
-
+import MyOrders from "./screens/MyOrders";
+import PrivateRoute from "./components/PrivateRoute";
 import Header from "./components/Navbar";
-//import PrivateRoute from "../src/pages/routes/PrivateRoute";
 import setToken from "../src/utils/setToken";
 import "./App.css";
 
@@ -25,11 +26,13 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/product/:id" component={Product} />
-        <Route exact path="/cart" component={Cart} />
+        <PrivateRoute path="/order/:id" component={Order} />
+        <PrivateRoute exact path="/cart" component={Cart} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/address" component={AddAddress} />
-        <Route exact path="/payment" component={Payment} />
+        <PrivateRoute exact path="/address" component={AddAddress} />
+        <PrivateRoute exact path="/payment" component={Payment} />
+        <PrivateRoute exact path="/orderhistory" component={MyOrders} />
       </Switch>
     </Router>
   );
