@@ -6,6 +6,9 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
   ADDRESS_REQUEST,
   GET_ADDRESS,
+  REMOVE_CART_PRODUCT,
+  EMPTY_CART,
+  NOT_ADDED,
 } from "../types";
 export const Cart = (
   state = {
@@ -13,6 +16,7 @@ export const Cart = (
     address: null,
     loading: false,
     errors: null,
+    success: false,
   },
   action
 ) => {
@@ -22,7 +26,7 @@ export const Cart = (
     case ADDRESS_REQUEST:
       return { ...state, loading: true };
     case GET_CART:
-      return { ...state, loading: false, cart: action.payload };
+      return { ...state, loading: false, cart: action.payload, success: false };
     case ADD_TO_CART:
       const item = action.payload;
       const existItem = state.cart.find((x) => x._id === item._id);
@@ -30,10 +34,22 @@ export const Cart = (
         return {
           ...state,
           cart: state.cart.map((x) => (x._id === existItem._id ? item : x)),
+          success: true,
         };
       } else {
-        return { ...state, cart: [...state.cart, item] };
+        return { ...state, cart: [...state.cart, item], success: true };
       }
+
+    case REMOVE_CART_PRODUCT:
+      return {
+        ...state,
+        cart: state.cart.filter((x) => x._id !== action.payload),
+      };
+    case EMPTY_CART:
+      return {
+        ...state,
+        cart: [],
+      };
     case GET_ADDRESS:
       return {
         ...state,
@@ -43,8 +59,15 @@ export const Cart = (
     case CART_SAVE_SHIPPING_ADDRESS:
       return { ...state, address: action.payload };
 
+    case NOT_ADDED:
+      return { ...state, success: false, errors: null };
     case CART_ERROR:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        errors: action.payload,
+        success: false,
+      };
     default:
       return state;
   }

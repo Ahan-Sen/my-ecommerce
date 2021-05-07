@@ -16,7 +16,7 @@ import {
 export const User = (
   state = {
     user: null,
-    userAuth: null,
+    userAuth: false,
     errors: null,
   },
   action
@@ -45,7 +45,8 @@ export const User = (
       localStorage.removeItem("token");
       return {
         ...state,
-        userAuth: null,
+        user: null,
+        userAuth: false,
         errors: action.payload,
       };
 

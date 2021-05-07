@@ -26,22 +26,23 @@ const Header = (props) => {
     <Fragment>
       <Nav navbar>
         <NavItem>
-          <NavbarBrand>
-            <Link to="/cart" className="text-white">
-              <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
-            </Link>
-          </NavbarBrand>
-        </NavItem>
-
-        <NavItem className="pb-2">
-          <NavLink href="#!" onClick={onLogout}>
-            <h5>
-              Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </h5>
-          </NavLink>
+          <Link to="/cart" className="text-white">
+            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+          </Link>
         </NavItem>
         <NavItem>
-          <Link to="/orderhistory">My Orders</Link>
+          <div class="dropdown">
+            <h5 className="text-white ml-4">
+              {users.user && users.user.name}{" "}
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </h5>
+            <div class="dropdown-content">
+              <Link to="/orderhistory">My Orders</Link>
+              <Link to="#!" onClick={onLogout}>
+                Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </Link>
+            </div>
+          </div>
         </NavItem>
       </Nav>
     </Fragment>

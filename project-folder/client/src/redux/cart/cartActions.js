@@ -6,6 +6,9 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
   ADDRESS_REQUEST,
   GET_ADDRESS,
+  REMOVE_CART_PRODUCT,
+  EMPTY_CART,
+  NOT_ADDED,
 } from "../types";
 import axios from "axios";
 
@@ -76,6 +79,57 @@ export const saveShippingAddress = (address) => async (dispatch) => {
     dispatch({
       type: CART_SAVE_SHIPPING_ADDRESS,
       payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: CART_ERROR,
+      payload: err.response.data,
+    });
+  }
+};
+
+export const removeFromCart = (id) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  try {
+    await axios.post(`cart/delete/${id}`, {}, config);
+    dispatch({
+      type: REMOVE_CART_PRODUCT,
+      payload: id,
+    });
+  } catch (err) {
+    dispatch({
+      type: CART_ERROR,
+      payload: err.response.data,
+    });
+  }
+};
+
+export const emptyCart = () => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  try {
+    await axios.put(`cart/delete`, {}, config);
+    dispatch({
+      type: EMPTY_CART,
+    });
+  } catch (err) {
+    dispatch({
+      type: CART_ERROR,
+      payload: err.response.data,
+    });
+  }
+};
+export const NotAdded = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: NOT_ADDED,
     });
   } catch (err) {
     dispatch({

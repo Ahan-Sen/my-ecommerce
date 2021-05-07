@@ -1,30 +1,48 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart, getCart, getAddress } from "../redux/cart/cartActions";
+import {
+  addToCart,
+  getCart,
+  getAddress,
+  removeFromCart,
+} from "../redux/cart/cartActions";
 import { getUser } from "../redux/auth/authActions";
+import { orderReset } from "../redux/order/orderActions";
 
 export default function Cart(props) {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // const removeFromCartHandler = (id) => {
-  //   dispatch(removeFromCart(id));
-  // };
   useEffect(() => {
     dispatch(getCart());
     dispatch(getAddress());
+    dispatch(orderReset());
   }, []);
+
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
 
   const checkoutHandler = () => {
     props.history.push("/address");
   };
   return (
     <div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <Link to="/">Home</Link>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Cart
+          </li>
+        </ol>
+      </nav>
       {cart.loading ? (
         <div>LOADING...</div>
       ) : (
         <div className="row ml-0 mr-0">
-          <div className="col-12 col-md-7">
+          <div className="col-12 col-md-8">
             <h1>Shopping Cart</h1>
             {cart.cart.length === 0 ? (
               <div>
@@ -67,7 +85,11 @@ export default function Cart(props) {
                       </div>
                       <div>${item.cart.price}</div>
                       <div>
-                        <button type="button" class="btn btn-danger">
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          onClick={() => removeFromCartHandler(item._id)}
+                        >
                           Delete
                         </button>
                       </div>
@@ -77,8 +99,8 @@ export default function Cart(props) {
               </ul>
             )}
           </div>
-          <div className=" col-12 col-md-5 ">
-            <div className="card card-body margin bg-light">
+          <div className=" col-12 col-md-4 ">
+            <div className="card card-body  bg-light">
               <ul className="list-unstyled">
                 <li>
                   <h2>

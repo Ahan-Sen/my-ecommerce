@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { detailsOrder } from "../redux/order/orderActions";
+import { detailsOrder, orderReset } from "../redux/order/orderActions";
 
 export default function Order(props) {
   const orderId = props.match.params.id;

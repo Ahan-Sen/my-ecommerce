@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Rating from "../components/Rating";
 import { detailsProduct } from "../redux/product/productActions";
-import { addToCart } from "../redux/cart/cartActions";
+import { addToCart, NotAdded } from "../redux/cart/cartActions";
 import { getUser } from "../redux/auth/authActions";
 import { Link } from "react-router-dom";
 
@@ -13,14 +13,26 @@ function Product(props) {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const users = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(detailsProduct(productId));
+    dispatch(NotAdded());
   }, [dispatch, productId]);
 
   useEffect(() => {
-    dispatch(getUser());
+    {
+      users.userAuth && users.user == null && dispatch(getUser());
+    }
   }, []);
+  useEffect(() => {
+    {
+      cart.success &&
+        setTimeout(() => {
+          dispatch(NotAdded());
+        }, 3000);
+    }
+  }, [cart.success]);
 
   const addToCartHandler = () => {
     if (users.userAuth) {
@@ -116,6 +128,41 @@ function Product(props) {
                   )}
                 </ul>
               </div>
+              {cart.success && (
+                <div
+                  class="alert alert-success alert-dismissible fade show"
+                  role="alert"
+                >
+                  <strong>Item added to your cart</strong>
+
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                    onClick={() => dispatch(NotAdded())}
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              )}
+              {cart.errors && (
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  role="alert"
+                >
+                  <strong>Item Cannot be added to your cart.</strong>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                    onClick={() => dispatch(NotAdded())}
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

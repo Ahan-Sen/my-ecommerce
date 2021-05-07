@@ -2,6 +2,7 @@ import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
+  ORDER_CREATE_RESET,
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
@@ -33,6 +34,17 @@ export const myOrders = () => async (dispatch) => {
   try {
     const res = await axios.get("/order/myorders");
     dispatch({ type: MY_ORDERS_SUCCESS, payload: res.data });
+  } catch (err) {
+    dispatch({
+      type: MY_ORDERS_FAIL,
+      payload: err.response.data,
+    });
+  }
+};
+
+export const orderReset = () => async (dispatch) => {
+  try {
+    dispatch({ type: ORDER_CREATE_RESET });
   } catch (err) {
     dispatch({
       type: MY_ORDERS_FAIL,

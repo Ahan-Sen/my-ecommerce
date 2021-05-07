@@ -11,11 +11,18 @@ function Home() {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+  const users = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(listProducts());
-    dispatch(getUser());
   }, []);
+
+  useEffect(() => {
+    {
+      users.userAuth && users.user == null && dispatch(getUser());
+    }
+  }, []);
+
   return (
     <div>
       {loading ? (

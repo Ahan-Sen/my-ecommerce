@@ -11,6 +11,7 @@ import {
   MY_ORDERS_REQUEST,
   MY_ORDERS_FAIL,
   MY_ORDERS_SUCCESS,
+  ORDER_CREATE_RESET,
 } from "../types";
 
 export const Order = (
@@ -24,6 +25,8 @@ export const Order = (
   switch (action.type) {
     case ORDER_CREATE_SUCCESS:
       return { ...state, success: true, order: action.payload };
+    case ORDER_CREATE_RESET:
+      return { ...state, success: false, order: null };
     case ORDER_CREATE_FAIL:
       return { ...state, error: action.payload };
     default:

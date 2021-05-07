@@ -106,6 +106,23 @@ router.post("/:id", auth, async (req, res) => {
   }
 });
 
+router.put("/delete", auth, async (req, res) => {
+  try {
+    await User.findOneAndUpdate(
+      {
+        _id: req.user.id,
+      },
+      { $set: { myCart: [] } },
+      { multi: true }
+    );
+    const user = await User.findById(req.user.id);
+    res.json(user.myCart);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 router.post("/delete/:id", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -120,15 +137,13 @@ router.post("/delete/:id", auth, async (req, res) => {
     if (present == false) {
       return res.status(404).json({ msg: "Product not found" });
     }
-    User.findOneAndUpdate(
+    await User.update(
       { _id: req.user.id },
-      {
-        $pull: {
-          myCart: { _id: mongoose.Types.ObjectId(req.params.id) },
-        },
-      }
+      { $pull: { myCart: { _id: req.params.id } } },
+      { multi: true }
     );
-    res.send("Product removed");
+    const nuser = await User.findById(req.user.id).populate("myCart.cart");
+    res.send(nuser.myCart);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
