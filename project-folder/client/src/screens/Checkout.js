@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { createOrder } from "../redux/order/orderActions";
 import { emptyCart } from "../redux/cart/cartActions";
 
-export default function Payment(props) {
+export default function Checkout(props) {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);

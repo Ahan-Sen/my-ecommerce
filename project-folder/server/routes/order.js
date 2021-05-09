@@ -37,6 +37,23 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
+router.put("/:id/pay", auth, async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
+    if (order) {
+      order.isPaid = true;
+      order.paidAt = Date.now();
+      const updatedOrder = await order.save();
+      res.send(updatedOrder);
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
+    }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 router.get("/:id", auth, async (req, res) => {
   try {
     const order = await Order.findById(req.params.id).populate("cart.cart");

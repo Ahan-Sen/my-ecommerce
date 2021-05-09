@@ -39,7 +39,7 @@ export const AddAddress = (props) => {
   const submit = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress(address));
-    props.history.push("/payment");
+    props.history.push("/checkout");
   };
 
   return (

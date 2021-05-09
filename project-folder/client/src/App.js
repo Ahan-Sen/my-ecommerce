@@ -1,13 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-//import Navbar from "./components/Navbar";
 import Home from "./screens/Home";
 import Product from "./screens/Product";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import Cart from "./screens/Cart";
 import Order from "./screens/Order";
-import Payment from "./screens/Payment";
+import Checkout from "./screens/Checkout";
 import AddAddress from "./screens/Address";
 import MyOrders from "./screens/MyOrders";
 import PrivateRoute from "./components/PrivateRoute";
@@ -31,7 +30,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/address" component={AddAddress} />
-        <PrivateRoute exact path="/payment" component={Payment} />
+        <PrivateRoute exact path="/checkout" component={Checkout} />
         <PrivateRoute exact path="/orderhistory" component={MyOrders} />
       </Switch>
     </Router>

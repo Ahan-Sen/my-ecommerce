@@ -25,23 +25,49 @@ export const Order = (
   switch (action.type) {
     case ORDER_CREATE_SUCCESS:
       return { ...state, success: true, order: action.payload };
+
     case ORDER_CREATE_RESET:
       return { ...state, success: false, order: null };
     case ORDER_CREATE_FAIL:
-      return { ...state, error: action.payload };
+
     default:
       return state;
   }
 };
 
-export const OrderDetails = (state = { order: {}, loading: true }, action) => {
+export const OrderDetails = (
+  state = { order: {}, loading: true, paySuccess: false },
+  action
+) => {
   switch (action.type) {
     case ORDER_DETAILS_REQUEST:
-      return { loading: true };
+      return { ...state, loading: true };
     case ORDER_DETAILS_SUCCESS:
-      return { loading: false, order: action.payload };
+      return {
+        ...state,
+        loading: false,
+        order: action.payload,
+        paySuccess: false,
+      };
     case ORDER_DETAILS_FAIL:
-      return { loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        paySuccess: false,
+      };
+
+    case ORDER_PAY_REQUEST:
+      return { ...state, paymentInitiate: true };
+    case ORDER_PAY_SUCCESS:
+      return {
+        ...state,
+        paymentInitiate: false,
+        order: action.payload,
+        paySuccess: true,
+      };
+    case ORDER_PAY_FAIL:
+      return { ...state, paymentInitiate: false, error: action.payload };
     default:
       return state;
   }

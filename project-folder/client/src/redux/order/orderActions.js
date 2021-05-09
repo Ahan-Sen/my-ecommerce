@@ -13,7 +13,6 @@ import {
   MY_ORDERS_FAIL,
   MY_ORDERS_SUCCESS,
 } from "../types";
-
 import axios from "axios";
 
 export const detailsOrder = (orderId) => async (dispatch) => {
@@ -69,6 +68,37 @@ export const createOrder = (order) => async (dispatch) => {
     dispatch({
       type: ORDER_CREATE_FAIL,
       payload: err.response.data,
+    });
+  }
+};
+
+export const paymentInitiated = () => async (dispatch) => {
+  try {
+    dispatch({ type: ORDER_PAY_REQUEST });
+  } catch (err) {
+    dispatch({
+      type: ORDER_PAY_FAIL,
+      payload: err.response.data,
+    });
+  }
+};
+
+export const payOrder = (orderId) => async (dispatch) => {
+  const config = {
+    header: {
+      "Content-Type": "application/json",
+    },
+  };
+  try {
+    const res = await axios.put(`/order/${orderId}/pay`, {}, config);
+    dispatch({
+      type: ORDER_PAY_SUCCESS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: ORDER_PAY_FAIL,
+      payload: err.response,
     });
   }
 };

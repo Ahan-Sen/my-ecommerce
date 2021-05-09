@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsOrder, orderReset } from "../redux/order/orderActions";
+import StripeContainer from "../components/StripeContainer";
+import axios from "axios";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
 export default function Order(props) {
   const orderId = props.match.params.id;
@@ -9,7 +12,17 @@ export default function Order(props) {
   const orderDetails = useSelector((state) => state.orderDetails);
   useEffect(() => {
     dispatch(detailsOrder(orderId));
-  }, [dispatch, orderId]);
+  }, [dispatch, orderId, orderDetails.paySuccess]);
+  useEffect(() => {
+    orderDetails.paySuccess && setShow(true);
+  }, [orderDetails.paySuccess]);
+
+  const [showItem, setShowItem] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const toggleModal = () => {
+    setShow(!show);
+  };
 
   return (
     <div>
@@ -46,9 +59,9 @@ export default function Order(props) {
                   <div className="card card-body bg-light">
                     <h2>Payment</h2>
 
-                    {orderDetails.isPaid ? (
+                    {orderDetails.order.isPaid ? (
                       <div className="alert alert-success">
-                        Paid at {orderDetails.paidAt}
+                        Paid at {orderDetails.order.paidAt.substring(0, 10)}
                       </div>
                     ) : (
                       <div className="alert alert-danger">Not Paid</div>
@@ -135,7 +148,43 @@ export default function Order(props) {
                   </li>
                 </ul>
               </div>
+              {!orderDetails.order.isPaid ? (
+                showItem ? (
+                  <StripeContainer />
+                ) : (
+                  <>
+                    <button
+                      className="btn btn-lg btn-block btn-warning"
+                      onClick={() => setShowItem(true)}
+                    >
+                      {" "}
+                      PAY NOW
+                    </button>
+                  </>
+                )
+              ) : (
+                <div></div>
+              )}
             </div>
+          </div>
+
+          <div>
+            <Modal isOpen={show} toggle={toggleModal}>
+              <ModalHeader className="justify-content-center">
+                <h2 className="text-success text-center">Thank You</h2>
+              </ModalHeader>
+              <ModalBody>
+                <p className="text-center">
+                  Your Order has been successfully Placed
+                </p>
+                <button
+                  className="btn btn-md btn-success btn-block"
+                  onClick={toggleModal}
+                >
+                  OK
+                </button>
+              </ModalBody>
+            </Modal>
           </div>
         </div>
       )}

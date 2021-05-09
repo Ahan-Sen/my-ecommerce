@@ -32,7 +32,7 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="">
+    <div>
       <div className="container">
         <div className="row">
           <div className="col-md-6  mx-auto pt-4 pb-4 ">
