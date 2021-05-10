@@ -16,7 +16,7 @@ function MyOrders(props) {
         <div>LOADING...</div>
       ) : (
         <div>
-          <table class="table table-striped ">
+          <table class="table table-striped  ">
             <thead>
               <tr>
                 <th scope="col">id</th>
@@ -29,7 +29,7 @@ function MyOrders(props) {
             </thead>
             <tbody>
               {myorders.order.map((order) => (
-                <tr key={order._id}>
+                <tr>
                   <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice.toFixed(2)}</td>

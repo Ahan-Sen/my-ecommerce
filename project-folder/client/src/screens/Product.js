@@ -50,8 +50,12 @@ function Product(props) {
         <div>
           <Link to="/">Back to Result</Link>
           <div className="row ml-0 mr-0">
-            <div className=" col-5">
-              <img src={product.image} alt={product.name}></img>
+            <div className=" col-12 col-lg-5">
+              <img
+                className="img-fluid"
+                src={product.image}
+                alt={product.name}
+              ></img>
             </div>
             <div className=" col-12 col-lg-3">
               <ul className="list-unstyled">

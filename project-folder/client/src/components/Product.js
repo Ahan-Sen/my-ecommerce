@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 export default function Product({ product }) {
   const { _id, name, image, price, rating } = product;
   return (
-    <div className="col-sm-3 col-10 mt-4 offset-1 offset-sm-0">
+    <div className="col-sm-3 col-10 mt-4 ">
       <Card className="bg-light">
         <Link to={`/product/${product._id}`}>
           <CardImg top src={image} alt={name} />

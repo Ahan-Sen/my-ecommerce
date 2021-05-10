@@ -50,7 +50,7 @@ export default function Checkout(props) {
 
       <div className="mt-5">
         <div className="row ml-0 mr-0 ">
-          <div className="col-8">
+          <div className="col-12 col-lg-8">
             <ul className="list-unstyled">
               <li>
                 <div className="card card-body bg-light  mb-5">
@@ -97,25 +97,23 @@ export default function Checkout(props) {
               </li>
             </ul>
           </div>
-          <div className=" col-4">
+          <div className=" col-12 col-lg-4">
             <div className="card card-body bg-light">
               <ul className="list-unstyled">
                 <li>
-                  <div className="row mb-3">
-                    <div className="offset-3">
-                      <h2>Order Summary</h2>
-                    </div>
+                  <div className="row mb-3 justify-content-center">
+                    <h2>Order Summary</h2>
                   </div>
                 </li>
                 <li>
                   <div className="row">
-                    <div className="col-4">Items Total : </div>
+                    <div className="col-5">Items Total : </div>
                     <div className="col-6">${cart.itemsPrice.toFixed(2)}</div>
                   </div>
                 </li>
                 <li>
                   <div className="row">
-                    <div className="col-4">Shipping</div>
+                    <div className="col-5">Shipping</div>
                     <div className="col-6">
                       ${cart.shippingPrice.toFixed(2)}
                     </div>
@@ -123,13 +121,13 @@ export default function Checkout(props) {
                 </li>
                 <li>
                   <div className="row">
-                    <div className="col-4">Tax : </div>
+                    <div className="col-5">Tax : </div>
                     <div className="col-6">${cart.taxPrice.toFixed(2)}</div>
                   </div>
                 </li>
                 <li>
                   <div className="row">
-                    <div className="col-4">
+                    <div className="col-5">
                       <strong> Order Total : </strong>
                     </div>
                     <div className="col-6">

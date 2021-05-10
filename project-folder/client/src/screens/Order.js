@@ -30,10 +30,10 @@ export default function Order(props) {
         <div>LOADING...</div>
       ) : (
         <div>
-          <h1>Order {orderDetails.order._id}</h1>
+          <h5>Order {orderDetails.order._id}</h5>
           <div className="row mt-5  ml-0 mr-0">
-            <div className="col-8">
-              <ul className="">
+            <div className=" col-12 col-lg-8">
+              <ul className="pl-0">
                 <li className="list-unstyled ">
                   <div className="card card-body bg-light">
                     <h2>Shipping</h2>
@@ -100,19 +100,17 @@ export default function Order(props) {
                 </li>
               </ul>
             </div>
-            <div className="col-4">
+            <div className="col-12 col-lg-4">
               <div className="card card-body bg-light">
                 <ul className="list-unstyled mt-2">
                   <li>
-                    <div className="row mb-3">
-                      <div className="offset-3">
-                        <h2>Order Summary</h2>
-                      </div>
+                    <div className="row mb-3 justify-content-center">
+                      <h2>Order Summary</h2>
                     </div>
                   </li>
                   <li>
                     <div className="row">
-                      <div className="col-4">Items Total : </div>
+                      <div className="col-5">Items Total : </div>
                       <div className="col-6">
                         ${orderDetails.order.itemsPrice.toFixed(2)}
                       </div>
@@ -120,7 +118,7 @@ export default function Order(props) {
                   </li>
                   <li>
                     <div className="row">
-                      <div className="col-4">Shipping</div>
+                      <div className="col-5">Shipping</div>
                       <div className="col-6">
                         ${orderDetails.order.shippingPrice.toFixed(2)}
                       </div>
@@ -128,7 +126,7 @@ export default function Order(props) {
                   </li>
                   <li>
                     <div className="row">
-                      <div className="col-4">Tax : </div>
+                      <div className="col-5">Tax : </div>
                       <div className="col-6">
                         ${orderDetails.order.taxPrice.toFixed(2)}
                       </div>
@@ -136,7 +134,7 @@ export default function Order(props) {
                   </li>
                   <li>
                     <div className="row">
-                      <div className="col-4">
+                      <div className="col-5">
                         <strong> Order Total : </strong>
                       </div>
                       <div className="col-6">

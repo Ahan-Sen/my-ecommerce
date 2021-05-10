@@ -24,7 +24,7 @@ const Header = (props) => {
 
   const userLinks = (
     <Fragment>
-      <Nav navbar>
+      <Nav navbar className="d-flex flex-row ">
         <NavItem>
           <Link to="/cart" className="text-white">
             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
@@ -50,16 +50,14 @@ const Header = (props) => {
 
   const authLinks = (
     <Fragment>
-      <Nav className="row" navbar>
+      <Nav navbar className="d-flex flex-row ">
         <NavItem>
-          <NavLink href="/cart">
+          <Link to="/cart" className="text-white">
             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
-          </NavLink>
+          </Link>
         </NavItem>
         <NavItem>
-          <NavLink href="/login">
-            <h5>Login</h5>
-          </NavLink>
+          <h5 className="text-white ml-4">Login</h5>
         </NavItem>
       </Nav>
     </Fragment>
@@ -67,21 +65,19 @@ const Header = (props) => {
 
   return (
     <>
-      <Navbar dark expand="md" className="bg-dark">
-        <div className="col-6">
+      <Navbar dark expand="md" className="bg-dark ">
+        <div className="col-12 col-md-6 text-center text-lg-left ">
           <NavbarBrand className="mr-3">
             <Link className="text-decoration-none" to="/">
-              <h2 className="text-white">SHOPPING</h2>
+              <h1 className="text-white">SHOPPING</h1>
             </Link>
           </NavbarBrand>
         </div>
-        <div className="col-5">
-          <ul className="d-flex justify-content-end">
+        <div className=" col-12 col-md-6">
+          <ul className="d-flex  justify-content-center justify-content-lg-end pl-0">
             {users.userAuth ? userLinks : authLinks}
           </ul>
         </div>
-
-        {/* <Link to="/cart">Cart</Link> */}
       </Navbar>
     </>
   );
