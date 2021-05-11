@@ -59,6 +59,8 @@ export const AddAddress = (props) => {
       </nav>
       {cart.loading ? (
         <div>LOADING...</div>
+      ) : cart.errors ? (
+        <div>{cart.errors}</div>
       ) : (
         <div className="container">
           <div className="row">

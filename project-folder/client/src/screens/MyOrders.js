@@ -11,11 +11,13 @@ function MyOrders(props) {
     dispatch(myOrders());
   }, [dispatch]);
   return (
-    <div>
+    <>
       {myorders.loading ? (
         <div>LOADING...</div>
+      ) : myorders.error ? (
+        <div>{myorders.error}</div>
       ) : (
-        <div>
+        <>
           <table class="table table-striped  ">
             <thead>
               <tr>
@@ -23,7 +25,7 @@ function MyOrders(props) {
                 <th scope="col">Date</th>
                 <th scope="col">Total</th>
                 <th scope="col">Paid</th>
-                <th scope="col">Deliverd</th>
+                <th scope="col">Delivered</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -54,9 +56,9 @@ function MyOrders(props) {
               ))}
             </tbody>
           </table>
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 }
 

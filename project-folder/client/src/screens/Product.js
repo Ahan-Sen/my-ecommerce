@@ -46,6 +46,8 @@ function Product(props) {
     <div>
       {loading ? (
         <div>LOADING...</div>
+      ) : error ? (
+        <div>{error}</div>
       ) : (
         <div>
           <Link to="/">Back to Result</Link>

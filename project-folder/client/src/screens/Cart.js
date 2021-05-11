@@ -40,6 +40,8 @@ export default function Cart(props) {
       </nav>
       {cart.loading ? (
         <div>LOADING...</div>
+      ) : cart.errors ? (
+        <div>{cart.errors}</div>
       ) : (
         <div className="row ml-0 mr-0">
           <div className="col-12 col-md-8">

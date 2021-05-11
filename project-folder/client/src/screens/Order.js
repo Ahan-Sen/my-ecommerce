@@ -28,6 +28,8 @@ export default function Order(props) {
     <div>
       {orderDetails.loading ? (
         <div>LOADING...</div>
+      ) : orderDetails.error ? (
+        <div>{orderDetails.error}</div>
       ) : (
         <div>
           <h5>Order {orderDetails.order._id}</h5>

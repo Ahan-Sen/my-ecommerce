@@ -57,7 +57,9 @@ const Header = (props) => {
           </Link>
         </NavItem>
         <NavItem>
-          <h5 className="text-white ml-4">Login</h5>
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <h5 className="text-white ml-4">Login</h5>
+          </Link>
         </NavItem>
       </Nav>
     </Fragment>

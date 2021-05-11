@@ -27,6 +27,8 @@ function Home() {
     <div>
       {loading ? (
         <div>LOADING...</div>
+      ) : error ? (
+        <div>{error}</div>
       ) : (
         <div>
           <div class="row justify-content-center ml-0 mr-0">
