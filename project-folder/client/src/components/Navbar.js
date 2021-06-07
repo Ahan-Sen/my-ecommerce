@@ -66,7 +66,7 @@ const Header = (props) => {
   );
 
   return (
-    <>
+    <div className="navsize">
       <Navbar dark expand="md" className="bg-dark ">
         <div className="col-12 col-md-6 text-center text-lg-left ">
           <NavbarBrand className="mr-3">
@@ -81,7 +81,7 @@ const Header = (props) => {
           </ul>
         </div>
       </Navbar>
-    </>
+    </div>
   );
 };
 

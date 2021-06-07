@@ -55,19 +55,19 @@ export default function Cart(props) {
                 {cart.cart.map((item) => (
                   <li key={item.product}>
                     <div className="row justify-content-between mt-4 mb-4 ">
-                      <div>
+                      <div className="col-3">
                         <img
                           src={item.cart.image}
                           alt={item.cart.name}
                           height="100px"
                         ></img>
                       </div>
-                      <div className="min-30">
+                      <div className="col-3">
                         <Link to={`/product/${item.cart._id}`}>
                           {item.cart.name}
                         </Link>
                       </div>
-                      <div>
+                      <div className="col-1 pl-0">
                         <select
                           value={item.qty}
                           onChange={(e) =>
@@ -85,8 +85,8 @@ export default function Cart(props) {
                           )}
                         </select>
                       </div>
-                      <div>${item.cart.price}</div>
-                      <div>
+                      <div className="col-2">${item.cart.price}</div>
+                      <div className="col-3">
                         <button
                           type="button"
                           class="btn btn-danger"

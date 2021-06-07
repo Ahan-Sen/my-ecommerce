@@ -4,10 +4,11 @@ const app = express();
 
 const connectDB = require("./config/db");
 //connect to database
+app.use(cors());
+
 connectDB();
 
 app.use(express.json({ extended: true }));
-app.use(cors());
 
 app.use("/register", require("./routes/register"));
 app.use("/auth", require("./routes/auth"));

@@ -14,13 +14,13 @@ router.post("/", cors(), async (req, res) => {
       payment_method: id,
       confirm: true,
     });
-    console.log("payment", payment);
+    //console.log("payment", payment);
     res.json({
       message: "payment successful",
       success: true,
     });
   } catch (error) {
-    console.log("Error", error);
+    //console.log("Error", error);
     res.json({
       message: "payment Failed",
       success: false,

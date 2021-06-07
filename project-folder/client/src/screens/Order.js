@@ -77,22 +77,24 @@ export default function Order(props) {
                       {orderDetails.order.cart.map((item) => (
                         <li key={item.product}>
                           <div className="row justify-content-between mt-4 mb-4 ">
-                            <div>
+                            <div className="col-6 col-md-8">
                               <img
                                 src={item.cart.image}
                                 alt={item.cart.name}
                                 height="100px"
                               ></img>
                             </div>
-                            <div className="min-30">
-                              <Link to={`/product/${item.cart._id}`}>
-                                {item.cart.name}
-                              </Link>
-                            </div>
+                            <div className="col-6 col-md-4">
+                              <div className="min-30">
+                                <Link to={`/product/${item.cart._id}`}>
+                                  {item.cart.name}
+                                </Link>
+                              </div>
 
-                            <div>
-                              {item.qty} X ${item.cart.price} = $
-                              {item.qty * item.cart.price}
+                              <div>
+                                {item.qty} X ${item.cart.price} = $
+                                {item.qty * item.cart.price}
+                              </div>
                             </div>
                           </div>
                         </li>
