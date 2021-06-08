@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, clearError } from "../redux/auth/authActions";
 import { Link } from "react-router-dom";
 import { getUser } from "../redux/auth/authActions";
+import { getCart } from "../redux/cart/cartActions";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const Header = (props) => {
   useEffect(() => {
     if (localStorage.token) {
       dispatch(getUser());
+      dispatch(getCart());
     }
   }, [users.userAuth]);
 
@@ -37,6 +39,11 @@ const Header = (props) => {
           <Link to="/cart" className="text-white">
             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
           </Link>
+          {cart.cart.length > 0 && (
+            <span className=" bg-danger text-light px-1 ml-1">
+              {cart.cart.length}
+            </span>
+          )}
         </NavItem>
         <NavItem>
           <div class="dropdown">
