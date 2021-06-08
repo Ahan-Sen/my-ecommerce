@@ -11,12 +11,14 @@ import {
 } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, clearError } from "../redux/auth/authActions";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getUser } from "../redux/auth/authActions";
 
 const Header = (props) => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
+
   const onLogout = () => {
     dispatch(logout());
     dispatch(clearError());
@@ -26,16 +28,17 @@ const Header = (props) => {
     if (localStorage.token) {
       dispatch(getUser());
     }
-  }, []);
-
-  const match = useRouteMatch("/orderhistory");
+  }, [users.userAuth]);
 
   const userLinks = (
     <Fragment>
-      <Nav navbar className="d-flex flex-row ">
+      <Nav navbar className="d-flex flex-row " style={{ marginRight: "60px" }}>
         <NavItem>
           <Link to="/cart" className="text-white">
             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            {cart.cart.length > 0 && (
+              <span className="badge">{cart.cart.length}</span>
+            )}
           </Link>
         </NavItem>
         <NavItem>
@@ -74,7 +77,7 @@ const Header = (props) => {
   );
 
   return (
-    <div className={match ? "navwidth" : ""}>
+    <div className="navsize">
       <Navbar dark expand="md" className="bg-dark ">
         <div className="col-12 col-md-6 text-center text-lg-left ">
           <NavbarBrand className="mr-3">

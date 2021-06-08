@@ -17,12 +17,6 @@ function Home() {
     dispatch(listProducts());
   }, []);
 
-  // useEffect(() => {
-  //   if (localStorage.token) {
-  //     dispatch(getUser());
-  //   }
-  // }, [users.userAuth]);
-
   return (
     <div>
       {loading ? (
