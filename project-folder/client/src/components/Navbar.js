@@ -39,7 +39,7 @@ const Header = (props) => {
           <Link to="/cart" className="text-white">
             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
             {cart.cart.length > 0 && (
-              <span className="badge">{cart.cart.length}</span>
+              <span className="small">{cart.cart.length}</span>
             )}
           </Link>
         </NavItem>
