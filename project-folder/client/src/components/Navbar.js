@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, clearError } from "../redux/auth/authActions";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { getUser } from "../redux/auth/authActions";
 import { getCart } from "../redux/cart/cartActions";
 
@@ -32,9 +32,11 @@ const Header = (props) => {
     }
   }, [users.userAuth]);
 
+  const match = useRouteMatch("/orderhistory");
+
   const userLinks = (
     <Fragment>
-      <Nav navbar className="d-flex flex-row " style={{ marginRight: "60px" }}>
+      <Nav navbar className="d-flex flex-row  mr-md-5 ">
         <NavItem>
           <Link to="/cart" className="text-white">
             <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
@@ -81,7 +83,7 @@ const Header = (props) => {
   );
 
   return (
-    <div className="navsize">
+    <div className={match ? "navwidth" : ""}>
       <Navbar dark expand="md" className="bg-dark ">
         <div className="col-12 col-md-6 text-center text-lg-left ">
           <NavbarBrand className="mr-3">
