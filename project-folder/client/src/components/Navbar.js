@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, clearError } from "../redux/auth/authActions";
 import { Link } from "react-router-dom";
 import { getUser } from "../redux/auth/authActions";
-import { getCart } from "../redux/cart/cartActions";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -28,7 +27,6 @@ const Header = (props) => {
   useEffect(() => {
     if (localStorage.token) {
       dispatch(getUser());
-      dispatch(getCart());
     }
   }, [users.userAuth]);
 
