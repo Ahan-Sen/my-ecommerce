@@ -11,16 +11,24 @@ import {
 } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, clearError } from "../redux/auth/authActions";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
+import { getUser } from "../redux/auth/authActions";
 
 const Header = (props) => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
-
   const onLogout = () => {
     dispatch(logout());
     dispatch(clearError());
   };
+
+  useEffect(() => {
+    if (localStorage.token) {
+      dispatch(getUser());
+    }
+  }, []);
+
+  const match = useRouteMatch("/orderhistory");
 
   const userLinks = (
     <Fragment>
@@ -66,7 +74,7 @@ const Header = (props) => {
   );
 
   return (
-    <div className="navsize">
+    <div className={match ? "navwidth" : ""}>
       <Navbar dark expand="md" className="bg-dark ">
         <div className="col-12 col-md-6 text-center text-lg-left ">
           <NavbarBrand className="mr-3">

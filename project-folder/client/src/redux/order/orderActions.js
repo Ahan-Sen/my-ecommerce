@@ -18,12 +18,14 @@ import axios from "axios";
 export const detailsOrder = (orderId) => async (dispatch) => {
   dispatch({ type: ORDER_DETAILS_REQUEST });
   try {
-    const res = await axios.get(`/order/${orderId}`);
+    const res = await axios.get(
+      `https://data-ecommerce.herokuapp.com/order/${orderId}`
+    );
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: res.data });
   } catch (err) {
     dispatch({
       type: ORDER_DETAILS_FAIL,
-      payload: err.response.data,
+      payload: err.message,
     });
   }
 };
@@ -31,7 +33,9 @@ export const detailsOrder = (orderId) => async (dispatch) => {
 export const myOrders = () => async (dispatch) => {
   dispatch({ type: MY_ORDERS_REQUEST });
   try {
-    const res = await axios.get("/order/myorders");
+    const res = await axios.get(
+      "https://data-ecommerce.herokuapp.com/order/myorders"
+    );
     dispatch({ type: MY_ORDERS_SUCCESS, payload: res.data });
   } catch (err) {
     dispatch({
@@ -59,7 +63,11 @@ export const createOrder = (order) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post("/order", order, config);
+    const res = await axios.post(
+      "https://data-ecommerce.herokuapp.com/order",
+      order,
+      config
+    );
     dispatch({
       type: ORDER_CREATE_SUCCESS,
       payload: res.data,
@@ -90,7 +98,11 @@ export const payOrder = (orderId) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.put(`/order/${orderId}/pay`, {}, config);
+    const res = await axios.put(
+      `https://data-ecommerce.herokuapp.com/order/${orderId}/pay`,
+      {},
+      config
+    );
     dispatch({
       type: ORDER_PAY_SUCCESS,
       payload: res.data,

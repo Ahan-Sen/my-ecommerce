@@ -104,3 +104,7 @@ img.small {
 .unstyle {
   text-decoration: none;
 }
+
+.navwidth {
+  min-width: 636px;
+}

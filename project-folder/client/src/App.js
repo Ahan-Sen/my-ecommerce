@@ -1,4 +1,5 @@
 import "./App.css";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./screens/Home";
 import Product from "./screens/Product";
@@ -13,13 +14,12 @@ import PrivateRoute from "./components/PrivateRoute";
 import Header from "./components/Navbar";
 import setToken from "../src/utils/setToken";
 import Footer from "./components/Footer";
-import "./App.css";
 
 if (localStorage.token) {
   setToken(localStorage.token);
 }
 
-function App() {
+function App(props) {
   return (
     <Router>
       <Header />

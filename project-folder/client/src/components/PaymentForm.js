@@ -43,10 +43,13 @@ export default function PaymentForm(props) {
       dispatch(paymentInitiated());
       try {
         const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:5000/payment", {
-          amount: orderDetails.order.totalPrice,
-          id,
-        });
+        const response = await axios.post(
+          "https://data-ecommerce.herokuapp.com/payment",
+          {
+            amount: orderDetails.order.totalPrice,
+            id,
+          }
+        );
 
         if (response.data.success) {
           dispatch(payOrder(orderDetails.order._id));

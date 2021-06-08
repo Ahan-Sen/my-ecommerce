@@ -19,7 +19,7 @@ export const getUser = () => async (dispatch) => {
     setToken(localStorage.token);
   }
   try {
-    const res = await axios.get("/auth");
+    const res = await axios.get("https://data-ecommerce.herokuapp.com/auth");
     dispatch({
       type: SET_USER,
       payload: res.data,
@@ -41,7 +41,11 @@ export const registerUser = (userData) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post("/register", userData, config);
+    const res = await axios.post(
+      "https://data-ecommerce.herokuapp.com/register",
+      userData,
+      config
+    );
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
@@ -63,7 +67,11 @@ export const loginUser = (userData) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post("/auth", userData, config);
+    const res = await axios.post(
+      "https://data-ecommerce.herokuapp.com/auth",
+      userData,
+      config
+    );
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,

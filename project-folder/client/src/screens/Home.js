@@ -17,11 +17,11 @@ function Home() {
     dispatch(listProducts());
   }, []);
 
-  useEffect(() => {
-    {
-      users.userAuth && users.user == null && dispatch(getUser());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.token) {
+  //     dispatch(getUser());
+  //   }
+  // }, [users.userAuth]);
 
   return (
     <div>

@@ -17,7 +17,7 @@ export const getCart = () => async (dispatch) => {
     type: CART_REQUEST,
   });
   try {
-    const res = await axios.get("/cart");
+    const res = await axios.get("https://data-ecommerce.herokuapp.com/cart");
     dispatch({
       type: GET_CART,
       payload: res.data,
@@ -37,7 +37,11 @@ export const addToCart = (id, qty) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post(`/cart/${id}`, { qty: qty }, config);
+    const res = await axios.post(
+      `https://data-ecommerce.herokuapp.com/cart/${id}`,
+      { qty: qty },
+      config
+    );
     dispatch({
       type: ADD_TO_CART,
       payload: res.data,
@@ -55,7 +59,9 @@ export const getAddress = () => async (dispatch) => {
     type: ADDRESS_REQUEST,
   });
   try {
-    const res = await axios.get("/cart/address");
+    const res = await axios.get(
+      "https://data-ecommerce.herokuapp.com/cart/address"
+    );
     dispatch({
       type: GET_ADDRESS,
       payload: res.data,
@@ -75,7 +81,11 @@ export const saveShippingAddress = (address) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post("/cart/addAddress", address, config);
+    const res = await axios.post(
+      "https://data-ecommerce.herokuapp.com/cart/addAddress",
+      address,
+      config
+    );
     dispatch({
       type: CART_SAVE_SHIPPING_ADDRESS,
       payload: res.data,
@@ -95,7 +105,11 @@ export const removeFromCart = (id) => async (dispatch) => {
     },
   };
   try {
-    await axios.post(`cart/delete/${id}`, {}, config);
+    await axios.post(
+      `https://data-ecommerce.herokuapp.com/cart/delete/${id}`,
+      {},
+      config
+    );
     dispatch({
       type: REMOVE_CART_PRODUCT,
       payload: id,
@@ -115,7 +129,11 @@ export const emptyCart = () => async (dispatch) => {
     },
   };
   try {
-    await axios.put(`cart/delete`, {}, config);
+    await axios.put(
+      `https://data-ecommerce.herokuapp.com/cart/delete`,
+      {},
+      config
+    );
     dispatch({
       type: EMPTY_CART,
     });
