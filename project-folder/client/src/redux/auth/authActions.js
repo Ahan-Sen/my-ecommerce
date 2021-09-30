@@ -27,7 +27,7 @@ export const getUser = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: AUTH_ERROR,
-      payload: err.response.data,
+      payload: err.response,
     });
   }
 };

@@ -25,7 +25,7 @@ export const getCart = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: CART_ERROR,
-      payload: err.response.data,
+      payload: err.response,
     });
   }
 };
