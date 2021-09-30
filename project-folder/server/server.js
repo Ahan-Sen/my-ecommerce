@@ -10,6 +10,7 @@ connectDB();
 
 app.use(express.json({ extended: true }));
 
+//route
 app.use("/register", require("./routes/register"));
 app.use("/auth", require("./routes/auth"));
 app.use("/cart", require("./routes/cart"));
