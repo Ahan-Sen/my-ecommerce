@@ -86,7 +86,7 @@ export default function Checkout(props) {
                               </Link>
                             </div>
                             <div className="">
-                              {item.qty} X ${item.cart.price} = $
+                              {item.qty} X ₹{item.cart.price} = ₹
                               {item.qty * item.cart.price}
                             </div>
                           </div>
@@ -109,21 +109,21 @@ export default function Checkout(props) {
                 <li>
                   <div className="row">
                     <div className="col-5">Items Total : </div>
-                    <div className="col-6">${cart.itemsPrice.toFixed(2)}</div>
+                    <div className="col-6">₹{cart.itemsPrice.toFixed(2)}</div>
                   </div>
                 </li>
                 <li>
                   <div className="row">
                     <div className="col-5">Shipping</div>
                     <div className="col-6">
-                      ${cart.shippingPrice.toFixed(2)}
+                      ₹{cart.shippingPrice.toFixed(2)}
                     </div>
                   </div>
                 </li>
                 <li>
                   <div className="row">
                     <div className="col-5">Tax : </div>
-                    <div className="col-6">${cart.taxPrice.toFixed(2)}</div>
+                    <div className="col-6">₹{cart.taxPrice.toFixed(2)}</div>
                   </div>
                 </li>
                 <li>
@@ -132,7 +132,7 @@ export default function Checkout(props) {
                       <strong> Order Total : </strong>
                     </div>
                     <div className="col-6">
-                      <strong>${cart.totalPrice.toFixed(2)}</strong>
+                      <strong>₹{cart.totalPrice.toFixed(2)}</strong>
                     </div>
                   </div>
                 </li>

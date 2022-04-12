@@ -92,7 +92,7 @@ export default function Order(props) {
                               </div>
 
                               <div>
-                                {item.qty} X ${item.cart.price} = $
+                                {item.qty} X ₹{item.cart.price} = ₹
                                 {item.qty * item.cart.price}
                               </div>
                             </div>
@@ -116,7 +116,7 @@ export default function Order(props) {
                     <div className="row">
                       <div className="col-5">Items Total : </div>
                       <div className="col-6">
-                        ${orderDetails.order.itemsPrice.toFixed(2)}
+                        ₹{orderDetails.order.itemsPrice.toFixed(2)}
                       </div>
                     </div>
                   </li>
@@ -124,7 +124,7 @@ export default function Order(props) {
                     <div className="row">
                       <div className="col-5">Shipping</div>
                       <div className="col-6">
-                        ${orderDetails.order.shippingPrice.toFixed(2)}
+                        ₹{orderDetails.order.shippingPrice.toFixed(2)}
                       </div>
                     </div>
                   </li>
@@ -132,7 +132,7 @@ export default function Order(props) {
                     <div className="row">
                       <div className="col-5">Tax : </div>
                       <div className="col-6">
-                        ${orderDetails.order.taxPrice.toFixed(2)}
+                        ₹{orderDetails.order.taxPrice.toFixed(2)}
                       </div>
                     </div>
                   </li>
@@ -143,7 +143,7 @@ export default function Order(props) {
                       </div>
                       <div className="col-6">
                         <strong>
-                          ${orderDetails.order.totalPrice.toFixed(2)}
+                          ₹{orderDetails.order.totalPrice.toFixed(2)}
                         </strong>
                       </div>
                     </div>

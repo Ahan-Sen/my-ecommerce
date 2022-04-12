@@ -27,7 +27,7 @@ export default function Product({ product }) {
           </Link>
           <Rating rating={product.rating} numReviews={product.numReviews} />
           <div>
-            <h5>${price}</h5>
+            <h5>₹{price}</h5>
           </div>
         </CardBody>
       </Card>

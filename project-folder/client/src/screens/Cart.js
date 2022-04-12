@@ -85,7 +85,7 @@ export default function Cart(props) {
                           )}
                         </select>
                       </div>
-                      <div className="col-2">${item.cart.price}</div>
+                      <div className="col-2">₹{item.cart.price}</div>
                       <div className="col-3">
                         <button
                           type="button"
@@ -107,7 +107,7 @@ export default function Cart(props) {
                 <li>
                   <h2>
                     Subtotal ({cart.cart.reduce((a, c) => a + c.qty, 0)} items)
-                    : ${cart.cart.reduce((a, c) => a + c.cart.price * c.qty, 0)}
+                    : ₹{cart.cart.reduce((a, c) => a + c.cart.price * c.qty, 0)}
                   </h2>
                 </li>
                 <li>

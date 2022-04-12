@@ -71,7 +71,7 @@ function Product(props) {
                     numReviews={product.numReviews}
                   />
                 </li>
-                <li>Price : ${product.price}</li>
+                <li>Price : ₹{product.price}</li>
                 <li>
                   {" "}
                   Description: <p> {product.description}</p>
@@ -84,7 +84,7 @@ function Product(props) {
                   <li>
                     <div className="row justify-content-between">
                       <div>Price</div>
-                      <div className="font-weight-bold">${product.price}</div>
+                      <div className="font-weight-bold">₹{product.price}</div>
                     </div>
                   </li>
                   <li>

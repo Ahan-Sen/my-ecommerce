@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, clearError, getUser } from "../redux/auth/authActions";
-//import { getUser } from "../redux/auth/authActions";
 
 export const Login = (props) => {
   const dispatch = useDispatch();

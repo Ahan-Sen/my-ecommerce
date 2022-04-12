@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Product from "../components/Product";
-//import LoadingBox from "../components/LoadingBox";
-//import MessageBox from "../components/MessageBox";
 import { listProducts } from "../redux/product/productActions";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../redux/auth/authActions";
-import axios from "axios";
 
 function Home() {
   const dispatch = useDispatch();
