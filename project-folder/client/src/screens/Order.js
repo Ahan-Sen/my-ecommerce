@@ -63,7 +63,7 @@ export default function Order(props) {
 
                     {orderDetails.order.isPaid ? (
                       <div className="alert alert-success">
-                        Paid at {orderDetails.order.paidAt.substring(0, 10)}
+                        Paid on {new Date(orderDetails.order.paidAt).toLocaleString('en-GB',{ hour12: true })}
                       </div>
                     ) : (
                       <div className="alert alert-danger">Not Paid</div>

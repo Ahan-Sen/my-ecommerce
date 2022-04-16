@@ -58,6 +58,7 @@ export const Register = (props) => {
                   value={name}
                   onChange={handleChange}
                   className="form-control"
+                  autoComplete="off"
                   autofocus
                 />
               </div>
@@ -72,6 +73,7 @@ export const Register = (props) => {
                   placeholder="Email address"
                   value={email}
                   onChange={handleChange}
+                  autoComplete="off"
                   autofocus
                 />
               </div>

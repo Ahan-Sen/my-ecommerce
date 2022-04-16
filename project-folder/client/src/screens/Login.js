@@ -50,6 +50,7 @@ export const Login = (props) => {
                   value={email}
                   onChange={handleChange}
                   autofocus
+                  autoComplete="off"
                 />
               </div>
 
@@ -90,9 +91,9 @@ export const Login = (props) => {
               <div>
                 {users.errors !== null && (
                   <div className="alert alert-danger text-center" role="alert">
-                    {users.errors.msg
+                    {users?.errors?.msg
                       ? users.errors.msg
-                      : users.errors.error[0].msg}
+                      : users?.errors?.error[0]?.msg}
                     <button
                       className="btn text-right"
                       onClick={() => dispatch(clearError())}

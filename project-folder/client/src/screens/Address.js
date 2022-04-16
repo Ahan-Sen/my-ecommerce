@@ -79,6 +79,7 @@ export const AddAddress = (props) => {
                     onChange={handleChange}
                     className="form-control"
                     autofocus
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -97,6 +98,7 @@ export const AddAddress = (props) => {
                     value={houseNumber}
                     onChange={handleChange}
                     autofocus
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -112,6 +114,7 @@ export const AddAddress = (props) => {
                     value={city}
                     onChange={handleChange}
                     className="form-control rounded"
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -129,6 +132,7 @@ export const AddAddress = (props) => {
                     value={postalcode}
                     onChange={handleChange}
                     className="form-control"
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -146,6 +150,7 @@ export const AddAddress = (props) => {
                     value={country}
                     onChange={handleChange}
                     className="form-control"
+                    autoComplete="off"
                     required
                   />
                 </div>

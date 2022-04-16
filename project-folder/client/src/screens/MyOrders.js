@@ -33,9 +33,9 @@ function MyOrders(props) {
               {myorders.order.map((order) => (
                 <tr>
                   <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>{new Date(order.createdAt).toLocaleDateString('en-GB')}</td>
                   <td>{order.totalPrice.toFixed(2)}</td>
-                  <td>{order.isPaid ? order.paidAt.substring(0, 10) : "No"}</td>
+                  <td>{order.isPaid ? new Date(order.paidAt).toLocaleDateString('en-GB'): "No"}</td>
                   <td>
                     {order.isDelivered
                       ? order.deliveredAt.substring(0, 10)
